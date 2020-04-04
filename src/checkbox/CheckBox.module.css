@@ -1,0 +1,41 @@
+.innerCheckbox {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.container {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.checkbox {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: 5px;
+    background: white;
+    border: 2px solid rgb(34, 34, 34);
+    transition: all 150ms;
+}
+
+.icon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: black;
+    stroke-width: 2px;
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
