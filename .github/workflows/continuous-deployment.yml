@@ -31,4 +31,4 @@ jobs:
         run: heroku config:set GIT_HASH=${GITHUB_SHA} GIT_BRANCH=${GITHUB_REF} --app component-lib-$ENVIRONMENT
 
       - name: Push to Heroku
-        run: git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/component-lib-$ENVIRONMENT.git $GITHUB_SHA:master
+        run: git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/component-lib-$ENVIRONMENT.git $GITHUB_SHA:refs/heads/master
