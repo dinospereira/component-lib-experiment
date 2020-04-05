@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Fetch all history for all tags and branches
+        run: git fetch --prune --unshallow
+
       - name: Install
         run: yarn
 
@@ -36,18 +39,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Fetch all history for all tags and branches
+        run: git fetch --prune --tags --unshallow
+
       - name: Set QA Environment
         run: echo "::set-env name=ENVIRONMENT::develop"
 
       - name: Set Production Environment
         if: github.ref == 'refs/heads/master'
         run: echo "::set-env name=ENVIRONMENT::master"
-
-      - name: Unshallow Repo
-        run: git fetch --all --unshallow
-
-      - name: Add Remote Origin
-        run: git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/component-lib-$ENVIRONMENT.git
 
       - name: Push to Heroku
         run: git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/component-lib-$ENVIRONMENT.git $GITHUB_SHA:refs/heads/master
