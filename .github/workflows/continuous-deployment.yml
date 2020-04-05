@@ -1,15 +1,32 @@
 name: Contiuous Deployment
 
 on:
+  pull_request:
   push:
     branches:
       - master
       - develop
 
 jobs:
+  build:
+    name: Build And Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install
+        run: yarn
+
+      - name: Build
+        run: yarn build
+
+      - name: Test
+        run: yarn test --watchAll=false
+
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    needs: build
     if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop')
 
     env:
@@ -17,7 +34,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
 
       - name: Set QA Environment
         run: echo "::set-env name=ENVIRONMENT::develop"
@@ -25,6 +42,9 @@ jobs:
       - name: Set Production Environment
         if: github.ref == 'refs/heads/master'
         run: echo "::set-env name=ENVIRONMENT::master"
+
+      - name: Unshallow Repo
+        run: git fetch --all --unshallow
 
       - name: Add Remote Origin
         run: git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/component-lib-$ENVIRONMENT.git
