@@ -43,11 +43,5 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: echo "::set-env name=ENVIRONMENT::master"
 
-      - name: Unshallow Repo
-        run: git fetch --all --unshallow
-
-      - name: Add Remote Origin
-        run: git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/component-lib-$ENVIRONMENT.git
-
       - name: Push to Heroku
         run: git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/component-lib-$ENVIRONMENT.git $GITHUB_SHA:refs/heads/master
