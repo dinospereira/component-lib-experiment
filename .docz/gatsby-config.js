@@ -46,6 +46,7 @@ const config = {
         o: null,
         open: null,
         'open-browser': null,
+        '': { '/build': true },
         root:
           '/Users/dinopereira/projects/comp-lib/component-lib-experiment/.docz',
         base: '/',
