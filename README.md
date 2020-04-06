@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ec8fdcc21c0e40f8880177b4d0712e6e)](https://app.codacy.com/manual/dinospereira/component-lib-experiment?utm_source=github.com&utm_medium=referral&utm_content=dinospereira/component-lib-experiment&utm_campaign=Badge_Grade_Dashboard)
 
+[![Actions Status](https://github.com/dinospereira/component-lib-experiment/workflows/continuous_deployment/badge.svg)](https://github.com/dinospereira/component-lib-experiment/actions)
+
 In the project directory, you can run:
 
 ### `yarn start`
